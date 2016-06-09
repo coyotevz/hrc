@@ -8,6 +8,8 @@ Vue.use(Router)
 
 // Install resource
 Vue.use(Resource)
+Vue.http.options.root = 'http://localhost:5000/api/v1'
+Vue.http.headers.common['Authorization'] = 'Basic abcd02394'
 
 Vue.config.debug = true
 

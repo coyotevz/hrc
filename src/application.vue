@@ -3,10 +3,18 @@
     <h1>Vue Application</h1>
     <p>Sample application placeholder.</p>
     <p>This is a <a href="#">link</a>.</p>
+    <employees-list></employees-list>
   </div>
 </template>
 
 <script>
+import EmployeesList from './components/employees_list'
+
+export default {
+  components: {
+    'employees-list': EmployeesList
+  }
+}
 </script>
 
 <style lang="scss">
