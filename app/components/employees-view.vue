@@ -1,15 +1,16 @@
 <template>
 <ul class="list">
-  <li v-for="employee in employees">
-    {{ employee.last_name }}, {{ employee.first_name }}
+  <li v-for="employee in objects">
+    {{ employee.last_name }}, {{ employee.first_name }} ({{ employee.cuil }})
   </li>
 </ul>
+<p>Showing {{ objects.length }} of {{ num_results }}</p>
 </template>
 
 <script>
 export default {
   data () {
-    return { employees: [] }
+    return { }
   },
   ready () {
     this.$http.get('employees').then((response) => {
@@ -23,7 +24,8 @@ export default {
       response.headers('expires')
 
       // set data on vm
-      this.$set('employees', response.data['objects'])
+      // this.$set('employees', response.data['objects'])
+      this.$set('$data', response.data)
     }, (response) => {
       // error callback
     })
