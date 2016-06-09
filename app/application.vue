@@ -1,18 +1,17 @@
 <template>
   <div id="application">
-    <h1>Vue Application</h1>
-    <p>Sample application placeholder.</p>
-    <p>This is a <a href="#">link</a>.</p>
-    <employees-list></employees-list>
+    <h1>Human Resource Application</h1>
+    <p>An application to manage and track small people teams</p>
+    <employees-view></employees-view>
   </div>
 </template>
 
 <script>
-import EmployeesList from './components/employees_list'
+import EmployeesView from './components/employees-view'
 
 export default {
   components: {
-    'employees-list': EmployeesList
+    'employees-view': EmployeesView
   }
 }
 </script>
