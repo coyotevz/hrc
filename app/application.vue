@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import EmployeesView from './components/employees-view'
+import EmployeesView from 'components/employees-view'
 
 export default {
   components: {
