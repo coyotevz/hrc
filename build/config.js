@@ -3,7 +3,9 @@ var path = require('path')
 
 module.exports = {
   build: {
-    env: require('./prod.env'),
+    env: {
+      NODE_ENV: '"production"'
+    },
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
@@ -15,8 +17,15 @@ module.exports = {
     productionGzipExtensions: ['js', 'css']
   },
   dev: {
-    env: require('./dev.env'),
+    env: {
+      NODE_ENV: '"development"'
+    },
     port: 8080,
     proxyTable: {}
+  },
+  tesing: {
+    env: {
+      NODE_ENV: '"testing"'
+    }
   }
 }
