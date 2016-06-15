@@ -47,8 +47,13 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        include: projectRoot,
-        exclude: /node_modules/
+        /* workaround to load voie with babel,
+         * see: https://github.com/inca/voie/issues/16 */
+        exclude: /node_modules\/(?!voie)/,
+        include: [
+          projectRoot,
+          path.resolve(__dirname, '../node_modules/voie/src')
+        ]
       },
       {
         test: /\.json$/,

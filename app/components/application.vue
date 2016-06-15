@@ -1,20 +1,11 @@
 <template>
   <div id="application">
-    <h1>Human Resource Application</h1>
-    <p>An application to manage and track small people teams</p>
-    <employees-view></employees-view>
+    <v-view class="application-body">
+      <h1>Human Resource Application</h1>
+      <p>An application to manage and track small people teams</p>
+    </v-view>
   </div>
 </template>
-
-<script>
-import EmployeesView from 'components/employees-view'
-
-export default {
-  components: {
-    'employees-view': EmployeesView
-  }
-}
-</script>
 
 <style lang="scss">
 html {
