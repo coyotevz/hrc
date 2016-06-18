@@ -1,10 +1,17 @@
 <template>
   <div class="employees-layout">
-    <h3>Employees</h3>
-    <ul class="employees-list">
-      <li v-for="employee in employees">
-        {{ employee.last_name }}, {{ employee.first_name }} ({{ employee.cuil }})
-      </li>
-    </ul>
+    <div v-for="employee in employees">
+      <employee-card :employee="employee"></employee-card>
+    </div>
   </div>
 </template>
+
+<script>
+import EmployeeCard from './employee.card'
+
+export default {
+  components: {
+    EmployeeCard
+  }
+}
+</script>

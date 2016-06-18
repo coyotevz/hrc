@@ -1,3 +1,13 @@
-.mdl-button {
-  font-weight: 600;
+body {
+  background-color: #eee;
+}
+
+.reset-height {
+  min-height: initial;
+}
+
+.employees-layout {
+  > div {
+    margin-bottom: 10px;
+  }
 }
