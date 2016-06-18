@@ -3,8 +3,11 @@ import { StateManager } from 'voie'
 import Resource from 'vue-resource'
 import VueMdl from 'vue-mdl'
 
-require('material-design-lite/material.css')
+// require('material-design-lite/material.css')
+require('material-design-lite/dist/material.blue-red.min.css')
 require('material-design-lite/material.js')
+
+require('scss/main.scss')
 
 // Install resource
 Vue.use(Resource)
@@ -20,7 +23,23 @@ let manager = new StateManager({
 })
 
 manager.add('root', {
+  redirect: 'home',
   component: require('components/application')
+})
+
+manager.add('home', {
+  parent: 'root',
+  component: require('components/home')
+})
+
+manager.add('employees', {
+  parent: 'root',
+  path: '/employees',
+  enter (ctx) {
+    return Vue.http.get('employees')
+      .then(response => { ctx.data.employees = response.data.objects })
+  },
+  component: require('components/employees')
 })
 
 manager.start()

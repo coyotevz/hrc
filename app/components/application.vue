@@ -1,10 +1,6 @@
 <template>
   <div id="application">
-    <v-view class="application-body">
-      <h1>Human Resource Application</h1>
-      <p>An application to manage and track small people teams</p>
-    </v-view>
-    <mdl-button v-mdl-ripple-effect>Ripple Effect</mdl-button>
+    <v-view class="application-body"></v-view>
   </div>
 </template>
 
@@ -26,10 +22,5 @@
     max-width: 600px;
     font-family: Source Sans Pro, Helvetica, sans-serif;
     text-align: center;
-
-    a {
-      color: #42b983;
-      text-decoration: none;
-    }
   }
 </style>
