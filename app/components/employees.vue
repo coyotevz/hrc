@@ -1,6 +1,6 @@
 <template>
-  <div class="employees-layout">
-    <div v-for="employee in employees">
+  <div class="employees-layout mdl-grid mdl-cell--8-col">
+    <div v-for="employee in employees" class="mdl-cell mdl-cell--6-col">
       <employee-card :employee="employee"></employee-card>
     </div>
   </div>
@@ -15,3 +15,6 @@ export default {
   }
 }
 </script>
+
+<style>
+</style>

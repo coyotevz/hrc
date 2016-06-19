@@ -4,11 +4,14 @@
     <div class="mdl-layout__header-row">
       <span class="mdl-layout__title">{{ title }}</span>
       <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="#">Nav link 1</a>
-        <a class="mdl-navigation__link" href="#">Nav link 2</a>
-        <a class="mdl-navigation__link" href="#">Nav link 3</a>
-      </nav>
+      <mdl-button id="app-menu" :icon="true" v-mdl-ripple-effect>
+        <i class="material-icons">more_vert</i>
+      </mdl-button>
+      <mdl-menu for="app-menu" v-mdl-ripple-effect class="mdl-menu--bottom-right">
+        <mdl-menu-item v-link="{ name: 'about' }">About</mdl-menu-item>
+        <mdl-menu-item>Contact</mdl-menu-item>
+        <mdl-menu-item>Legal Information</mdl-menu-item>
+      </mdl-menu>
     </div>
   </header>
 </template>

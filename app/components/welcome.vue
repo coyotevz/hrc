@@ -19,9 +19,12 @@
     height: 100vh;
 
     h2 {
-      font-size: 42px;
-      font-weight: 500;
-      letter-spacing: -1px;
+      text-align: center;
+      margin: 12px 0;
+    }
+
+    p {
+      font-size: 16px;
       text-align: center;
     }
   }

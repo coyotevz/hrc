@@ -40,4 +40,9 @@ manager.add('employees', {
   component: require('components/employees')
 })
 
+manager.add('about', {
+  path: '/about',
+  component: require('components/about.vue')
+})
+
 manager.start()
