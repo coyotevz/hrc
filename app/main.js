@@ -23,17 +23,15 @@ let manager = new StateManager({
 })
 
 manager.add('root', {
-  redirect: 'home',
+  component: require('components/welcome')
+})
+
+manager.add('app', {
   component: require('components/application')
 })
 
-manager.add('home', {
-  parent: 'root',
-  component: require('components/home')
-})
-
 manager.add('employees', {
-  parent: 'root',
+  parent: 'app',
   path: '/employees',
   enter (ctx) {
     return Vue.http.get('employees')

@@ -1,26 +1,25 @@
 <template>
-  <div id="application">
-    <v-view class="application-body"></v-view>
+  <div id="application" class="mdl-layout mdl-js-layout">
+    <topbar :title="title"></topbar>
+    <drawer :title="title"></drawer>
+    <main class="mdl-layout__content">
+      <v-view class="application-body"></v-view>
+    </main>
   </div>
 </template>
 
-<style lang="scss">
-  html {
-    height: 100%;
+<script>
+  import Topbar from './topbar'
+  import Drawer from './drawer'
+  export default {
+    data () {
+      return {
+        title: 'Employees'
+      }
+    },
+    components: {
+      Topbar,
+      Drawer
+    }
   }
-
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    margin: 0;
-  }
-
-  #application {
-    color: #2c3e50;
-    max-width: 600px;
-    font-family: Source Sans Pro, Helvetica, sans-serif;
-    text-align: center;
-  }
-</style>
+</script>
