@@ -42,7 +42,7 @@ export default {
   methods: {
     showDialog () {
       this.$refs.addDialog.open()
-      console.log('focus first input please!')
+      this.$nextTick(() => this.$refs.addDialog.$el.querySelector('input').focus())
     },
     okDialog () {
       this.$refs.addDialog.close()
