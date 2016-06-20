@@ -4,9 +4,8 @@
     <div class="mdl-layout__header-row">
       <span class="mdl-layout__title">{{ title }}</span>
       <div class="mdl-layout-spacer"></div>
-      <mdl-button id="app-menu" :icon="true" v-mdl-ripple-effect>
-        <i class="material-icons">more_vert</i>
-      </mdl-button>
+      <mdl-tooltip for="app-menu">Open Menu</mdl-tooltip>
+      <mdl-button id="app-menu" icon="more_vert" v-mdl-ripple-effect></mdl-button>
       <mdl-menu for="app-menu" v-mdl-ripple-effect class="mdl-menu--bottom-right">
         <mdl-menu-item v-link="{ name: 'about' }">About</mdl-menu-item>
         <mdl-menu-item>Contact</mdl-menu-item>

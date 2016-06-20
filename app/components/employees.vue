@@ -3,6 +3,7 @@
     <div v-for="employee in employees" class="mdl-cell mdl-cell--4-col">
       <employee-card :employee="employee"></employee-card>
     </div>
+    <mdl-tooltip for="add-button" class="mdl-tooltip--top">Add Employee</mdl-tooltip>
     <mdl-button id="add-button" v-mdl-ripple-effect accent fab>
       <i class="material-icons">add</i>
     </mdl-button>
