@@ -3,15 +3,15 @@
     <div v-for="employee in employees" class="mdl-cell mdl-cell--4-col">
       <employee-card :employee="employee"></employee-card>
     </div>
-    <mdl-tooltip for="add-button" class="mdl-tooltip--top">Add Employee</mdl-tooltip>
+    <mdl-tooltip for="add-button" class="mdl-tooltip--top">Add Employee (ctrl+a)</mdl-tooltip>
     <mdl-button id="add-button" v-mdl-ripple-effect accent fab
-      @click="$refs.addDialog.open()">
+      @click="showDialog()">
       <i class="material-icons">add</i>
     </mdl-button>
     <div v-transfer-dom>
       <mdl-dialog v-ref:add-dialog title="Add new employee">
         <div>
-          <mdl-textfield floating-label="Name" :value.sync="newEmployee.first_name"></mdl-textfield>
+          <mdl-textfield floating-label="Name" :value.sync="newEmployee.first_name" autofocus></mdl-textfield>
           <mdl-textfield floating-label="Last Name" :value.sync="newEmployee.last_name"></mdl-textfield>
         </div>
         <template slot="actions">
@@ -40,6 +40,10 @@ export default {
     EmployeeCard
   },
   methods: {
+    showDialog () {
+      this.$refs.addDialog.open()
+      console.log('focus first input please!')
+    },
     okDialog () {
       this.$refs.addDialog.close()
       console.log('Save this data:', this.newEmployee)
@@ -53,6 +57,16 @@ export default {
       this.newEmployee.first_name = ''
       this.newEmployee.last_name = ''
     }
+  },
+  created () {
+    window.addEventListener('keydown', event => {
+      if (event.ctrlKey && event.key === 'a') {
+        this.showDialog()
+        event.preventDefault()
+      }
+    })
+  },
+  beforeDestroy () {
   }
 }
 </script>
