@@ -6,6 +6,15 @@ html, body {
   min-height: initial;
 }
 
+.ellipsis-text {
+  display: inline;
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .employees-layout {
   > div {
     margin-bottom: 10px;
