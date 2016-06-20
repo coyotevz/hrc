@@ -10,10 +10,13 @@
     </mdl-button>
     <div v-transfer-dom>
       <mdl-dialog v-ref:add-dialog title="Add new employee">
-        <p>Hello. This is and information message. You can click outside or in the close button to close it.</p>
+        <div>
+          <mdl-textfield floating-label="Name" :value.sync="newEmployee.first_name"></mdl-textfield>
+          <mdl-textfield floating-label="Last Name" :value.sync="newEmployee.last_name"></mdl-textfield>
+        </div>
         <template slot="actions">
-          <mdl-button primary>Ok</mdl-button>
-          <mdl-button @click.stop="$refs.addDialog.close()">Cancel</mdl-button>
+          <mdl-button v-mdl-ripple-effect @click.stop="okDialog()" primary>Ok</mdl-button>
+          <mdl-button v-mdl-ripple-effect @click.stop="cancelDialog()">Cancel</mdl-button>
         </template>
       </mdl-dialog>
     </div>
@@ -24,8 +27,32 @@
 import EmployeeCard from './employee.card'
 
 export default {
+  data () {
+    return {
+      employees: [],
+      newEmployee: {
+        first_name: '',
+        last_name: ''
+      }
+    }
+  },
   components: {
     EmployeeCard
+  },
+  methods: {
+    okDialog () {
+      this.$refs.addDialog.close()
+      console.log('Save this data:', this.newEmployee)
+      this.resetNewEmployee()
+    },
+    cancelDialog () {
+      this.$refs.addDialog.close()
+      this.resetNewEmployee()
+    },
+    resetNewEmployee () {
+      this.newEmployee.first_name = ''
+      this.newEmployee.last_name = ''
+    }
   }
 }
 </script>
