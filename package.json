@@ -51,6 +51,7 @@
     "vue-mdl": "^0.8.3",
     "vue-resource": "^0.7.2",
     "vue-style-loader": "^1.0.0",
+    "vue-transfer-dom": "^1.1.0",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",

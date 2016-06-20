@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { StateManager } from 'voie'
 import Resource from 'vue-resource'
 import VueMdl from 'vue-mdl'
+import VueTransferDom from 'vue-transfer-dom'
 
 // require('material-design-lite/material.css')
 require('material-design-lite/dist/material.blue-red.min.css')
@@ -15,6 +16,9 @@ Vue.http.options.root = 'http://localhost:5000/api/v1'
 
 // Install vue mdl
 Vue.use(VueMdl)
+
+// Install vue-transfer-dom, required by mdl-dialog
+Vue.use(VueTransferDom)
 
 Vue.config.debug = true
 

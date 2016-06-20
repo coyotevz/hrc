@@ -4,9 +4,19 @@
       <employee-card :employee="employee"></employee-card>
     </div>
     <mdl-tooltip for="add-button" class="mdl-tooltip--top">Add Employee</mdl-tooltip>
-    <mdl-button id="add-button" v-mdl-ripple-effect accent fab>
+    <mdl-button id="add-button" v-mdl-ripple-effect accent fab
+      @click="$refs.addDialog.open()">
       <i class="material-icons">add</i>
     </mdl-button>
+    <div v-transfer-dom>
+      <mdl-dialog v-ref:add-dialog title="Add new employee">
+        <p>Hello. This is and information message. You can click outside or in the close button to close it.</p>
+        <template slot="actions">
+          <mdl-button primary>Ok</mdl-button>
+          <mdl-button @click.stop="$refs.addDialog.close()">Cancel</mdl-button>
+        </template>
+      </mdl-dialog>
+    </div>
   </div>
 </template>
 
