@@ -10,7 +10,7 @@
     </mdl-button>
     <div v-transfer-dom>
       <mdl-dialog v-ref:add-dialog title="New employee">
-        <employee-form :employee="newEmployee"></employee-form>
+        <employee-form v-ref:employee-form :employee="newEmployee"></employee-form>
         <template slot="actions">
           <mdl-button v-mdl-ripple-effect @click.stop="okDialog()" primary>Ok</mdl-button>
           <mdl-button v-mdl-ripple-effect @click.stop="cancelDialog()">Cancel</mdl-button>
@@ -50,12 +50,11 @@ export default {
       this.resetNewEmployee()
     },
     saveNewEmployee () {
-      return this.$http.post('employees/validation', this.newEmployee)
-        .then(response => {
-          if (response.data.error) {
-            console.log(response.data.messages)
-          }
-        })
+      return this.$refs.employeeForm.validate().then(data => {
+        if (data.isValid) {
+          this.$http.post('employees', this.newEmployee)
+        }
+      })
     },
     resetNewEmployee () {
       this.newEmployee.first_name = ''

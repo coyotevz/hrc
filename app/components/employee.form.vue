@@ -12,6 +12,17 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods: {
+    validate () {
+      return this.$http.post('employees/validation', this.employee)
+        .then(response => {
+          return {
+            isValid: Boolean(response.data.error === null),
+            messages: response.data.messages || null
+          }
+        })
+    }
   }
 }
 </script>
