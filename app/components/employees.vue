@@ -9,11 +9,8 @@
       <i class="material-icons">add</i>
     </mdl-button>
     <div v-transfer-dom>
-      <mdl-dialog v-ref:add-dialog title="Add new employee">
-        <div>
-          <mdl-textfield floating-label="Name" :value.sync="newEmployee.first_name" autofocus></mdl-textfield>
-          <mdl-textfield floating-label="Last Name" :value.sync="newEmployee.last_name"></mdl-textfield>
-        </div>
+      <mdl-dialog v-ref:add-dialog title="New employee">
+        <employee-form :employee="newEmployee"></employee-form>
         <template slot="actions">
           <mdl-button v-mdl-ripple-effect @click.stop="okDialog()" primary>Ok</mdl-button>
           <mdl-button v-mdl-ripple-effect @click.stop="cancelDialog()">Cancel</mdl-button>
@@ -25,19 +22,18 @@
 
 <script>
 import EmployeeCard from './employee.card'
+import EmployeeForm from './employee.form'
 
 export default {
   data () {
     return {
       employees: [],
-      newEmployee: {
-        first_name: '',
-        last_name: ''
-      }
+      newEmployee: {}
     }
   },
   components: {
-    EmployeeCard
+    EmployeeCard,
+    EmployeeForm
   },
   methods: {
     showDialog () {
@@ -46,12 +42,20 @@ export default {
     },
     okDialog () {
       this.$refs.addDialog.close()
-      console.log('Save this data:', this.newEmployee)
+      this.saveNewEmployee()
       this.resetNewEmployee()
     },
     cancelDialog () {
       this.$refs.addDialog.close()
       this.resetNewEmployee()
+    },
+    saveNewEmployee () {
+      return this.$http.post('employees/validation', this.newEmployee)
+        .then(response => {
+          if (response.data.error) {
+            console.log(response.data.messages)
+          }
+        })
     },
     resetNewEmployee () {
       this.newEmployee.first_name = ''
