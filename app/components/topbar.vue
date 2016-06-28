@@ -1,5 +1,5 @@
 <template>
-  <ui-toolbar :title="title">
+  <ui-toolbar class="ui-layout-header" :title="title" colored>
   </ui-toolbar>
 
   <!--header class="mdl-layout__header">

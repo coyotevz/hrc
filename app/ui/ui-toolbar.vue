@@ -3,7 +3,7 @@
 
     <div class="ui-toolbar-left">
       <ui-icon-button class="ui-toolbar-nav-icon" clear
-        :icon="iconColor" :icon="navIcon" @click="navIconClick"
+        :color="iconColor" :icon="navIcon" @click="navIconClick"
         v-if="!hideNavIcon"></ui-icon-button>
 
       <div class="ui-toolbar-brand" v-if="showBrand">
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import UiIconButton from './ui-icon-button'
+
 export default {
   name: 'ui-toolbar',
 
@@ -96,6 +98,10 @@ export default {
     navIconClick () {
       this.$dispatch('nav-icon-clicked')
     }
+  },
+
+  components: {
+    UiIconButton
   }
 }
 </script>

@@ -16,6 +16,11 @@ $color-primary-hint: rgba($color-black, 0.38);
 $color-primary-disabled: $color-primary-hint;
 $color-primary-divider: rgba($color-black, 0.12);
 
+$color-error: $palette-red-500;
+$color-danger: $color-error;
+$color-info: $palette-blue-500;
+$color-success: $palette-green-500;
+$color-warning: $palette-orange-500;
 
 /* Typography */
 $text-color-primary: rgba($color-black, 0.87);
