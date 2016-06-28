@@ -1,0 +1,19 @@
+
+@import "color-definitions";
+
+$font-stack: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+
+/* Colors */
+$color-primary: $palette-blue-500;
+$color-primary-dark: $palette-blue-700;
+$color-accent: $palette-pink-A200;
+
+$color-primary-contrast: $color-dark-contrast;
+$color-accent-contrast: $color-dark-contrast;
+
+
+/* Typography */
+$text-color-primary: rgba($color-black, 0.87);
+$text-link-color: $color-accent;
+$text-color-secondary: rgba($color-black, 0.54);

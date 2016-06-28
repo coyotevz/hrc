@@ -1,4 +1,7 @@
 <template>
+  <ui-toolbar :title="title">
+  </ui-toolbar>
+
   <header class="mdl-layout__header">
     <div class="mdl-layout-icon"></div>
     <div class="mdl-layout__header-row">
@@ -16,7 +19,12 @@
 </template>
 
 <script>
-  export default {
-    props: ['title']
+import UiToolbar from 'ui/ui-toolbar'
+
+export default {
+  props: ['title'],
+  components: {
+    UiToolbar
   }
+}
 </script>
