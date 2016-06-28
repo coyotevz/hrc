@@ -12,8 +12,20 @@ $color-accent: $palette-pink-A200;
 $color-primary-contrast: $color-dark-contrast;
 $color-accent-contrast: $color-dark-contrast;
 
+$color-primary-hint: rgba($color-black, 0.38);
+$color-primary-disabled: $color-primary-hint;
+$color-primary-divider: rgba($color-black, 0.12);
+
 
 /* Typography */
 $text-color-primary: rgba($color-black, 0.87);
 $text-link-color: $color-accent;
 $text-color-secondary: rgba($color-black, 0.54);
+
+
+/* Header */
+$header-height: 56px;
+$header-font-size: 18px;
+
+$drawer-width: 216px;
+$brand-holder-width: $drawer-width;
