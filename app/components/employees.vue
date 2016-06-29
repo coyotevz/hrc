@@ -1,13 +1,12 @@
 <template>
-  <div class="employees-layout mdl-grid">
-    <div v-for="employee in employees" class="mdl-cell mdl-cell--4-col">
+  <div class="employees-layout ui-grid">
+    <div v-for="employee in employees" class="ui-cell ui-cell-4 mdl-cell mdl-cell--4-col">
       <employee-card :employee="employee"></employee-card>
     </div>
-    <mdl-tooltip for="add-button" class="mdl-tooltip--top">Add Employee (ctrl+a)</mdl-tooltip>
-    <mdl-button id="add-button" v-mdl-ripple-effect accent fab
-      @click="showDialog()">
-      <i class="material-icons">add</i>
-    </mdl-button>
+
+    <ui-fab id="add-button" icon="add" @click="showDialog()" color="accent"
+      tooltip="Add Employee" tooltip-position="top center"></ui-fab>
+
     <div v-transfer-dom>
       <mdl-dialog v-ref:add-dialog title="New employee">
         <employee-form v-ref:employee-form :employee="newEmployee"></employee-form>
@@ -21,6 +20,8 @@
 </template>
 
 <script>
+import UiFab from 'ui/ui-fab'
+
 import EmployeeCard from './employee.card'
 import EmployeeForm from './employee.form'
 
@@ -31,12 +32,16 @@ export default {
       newEmployee: {}
     }
   },
+
   components: {
+    UiFab,
+
     EmployeeCard,
     EmployeeForm
   },
   methods: {
     showDialog () {
+      console.log('show dialog')
       this.$refs.addDialog.open()
       this.$nextTick(() => this.$refs.addDialog.$el.querySelector('input').focus())
     },
