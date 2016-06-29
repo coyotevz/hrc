@@ -1,6 +1,6 @@
 <template>
   <div class="employees-layout ui-grid">
-    <div v-for="employee in employees" class="ui-cell ui-cell-4 mdl-cell mdl-cell--4-col">
+    <div v-for="employee in employees" class="ui-cell">
       <employee-card :employee="employee"></employee-card>
     </div>
 
