@@ -100,7 +100,7 @@ export default {
   }
 
   &:not([disabled]) {
-    coursor: pointer;
+    cursor: pointer;
   }
 
   &.color-default {
