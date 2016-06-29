@@ -19,9 +19,13 @@ export default {
       type: String,
       default: 'bottom center'
     },
-    openOn: {
-      type: String,
-      default: 'hover focus'
+    openDelay: {
+      type: Number,
+      default: 600
+    },
+    closeDelay: {
+      type: Number,
+      default: 100
     }
   },
 
@@ -52,14 +56,42 @@ export default {
 
   methods: {
     initialize () {
+      this.$inTimeout = null
+      this.$outTimeout = null
+
+      const inHandler = event => {
+        if (this.$outTimeout !== null) {
+          clearTimeout(this.$outTimeout)
+        } else {
+          this.$inTimeout = setTimeout(() => {
+            this.tooltip.open(event)
+            this.$inTimeout = null
+          }, this.openDelay)
+        }
+      }
+
+      const outHandler = event => {
+        if (this.$inTimeout !== null) {
+          clearTimeout(this.$inTimeout)
+        } else {
+          this.$outTimeout = setTimeout(() => {
+            this.tooltip.close(event)
+            this.$outTimeout = null
+          }, this.closeDelay)
+        }
+      }
+
       if (this.trigger) {
         this.tooltip = new Tooltip({
           target: this.trigger,
           content: this.$els.tooltip,
           classes: 'ui-tooltip-theme',
           position: this.position,
-          openOn: 'hover focus'
+          openOn: null
         })
+
+        this.trigger.addEventListener('mouseenter', inHandler)
+        this.trigger.addEventListener('mouseleave', outHandler)
       }
     }
   }
