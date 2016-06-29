@@ -170,6 +170,10 @@ export default {
   .width-brand & {
     width: $brand-holder-width;
   }
+
+  .ui-layout-header & {
+    padding-left: 20px;
+  }
 }
 
 .ui-toolbar-brand-text {
@@ -203,6 +207,10 @@ export default {
 
   [slot="actions"] {
     display: flex;
+  }
+
+  .ui-layout-header & {
+    padding-right: 20px;
   }
 }
 

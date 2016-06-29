@@ -1,5 +1,8 @@
 <template>
   <ui-toolbar class="ui-layout-header" :title="title" colored>
+    <div slot="actions">
+      <ui-icon-button clear icon="more_vert" color="white"></ui-icon-button>
+    </div>
   </ui-toolbar>
 
   <!--header class="mdl-layout__header">
@@ -20,11 +23,13 @@
 
 <script>
 import UiToolbar from 'ui/ui-toolbar'
+import UiIconButton from 'ui/ui-icon-button'
 
 export default {
   props: ['title'],
   components: {
-    UiToolbar
+    UiToolbar,
+    UiIconButton
   }
 }
 </script>
