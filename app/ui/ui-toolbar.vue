@@ -170,10 +170,6 @@ export default {
   .width-brand & {
     width: $brand-holder-width;
   }
-
-  .ui-layout-header & {
-    padding-left: 20px;
-  }
 }
 
 .ui-toolbar-brand-text {
@@ -183,6 +179,7 @@ export default {
 
 .ui-toolbar-nav-icon {
   margin-right: 8px;
+  margin-left: 8px;
 }
 
 .ui-toolbar-brand {
