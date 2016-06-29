@@ -7,7 +7,9 @@
     <ui-fab id="add-button" icon="add" @click="showDialog()" color="accent"
       tooltip="Add Employee" tooltip-position="top center"></ui-fab>
 
-    <div v-transfer-dom>
+    <ui-dialog v-ref:add-dialog :show.sync="false"></ui-dialog>
+
+    <!--div v-transfer-dom>
       <mdl-dialog v-ref:add-dialog title="New employee">
         <employee-form v-ref:employee-form :employee="newEmployee"></employee-form>
         <template slot="actions">
@@ -15,12 +17,13 @@
           <mdl-button v-mdl-ripple-effect @click.stop="cancelDialog()">Cancel</mdl-button>
         </template>
       </mdl-dialog>
-    </div>
+    </div-->
   </div>
 </template>
 
 <script>
 import UiFab from 'ui/ui-fab'
+import UiDialog from 'ui/ui-dialog'
 
 import EmployeeCard from './employee.card'
 import EmployeeForm from './employee.form'
@@ -35,6 +38,7 @@ export default {
 
   components: {
     UiFab,
+    UiDialog,
 
     EmployeeCard,
     EmployeeForm
@@ -42,7 +46,8 @@ export default {
   methods: {
     showDialog () {
       console.log('show dialog')
-      this.$refs.addDialog.open()
+      // this.$refs.addDialog.open()
+      this.$refs.addDialog.show = true
       this.$nextTick(() => this.$refs.addDialog.$el.querySelector('input').focus())
     },
     okDialog () {
