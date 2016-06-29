@@ -36,6 +36,27 @@ $drawer-width: 216px;
 $brand-holder-width: $drawer-width;
 
 
+/* Grid */
+$grid-desktop-columns: 12;
+$grid-desktop-gutter: 16px;
+$grid-desktop-margin: 16px;
+
+$grid-desktop-breakpoint: 840px;
+
+$grid-tablet-columns: 8;
+$grid-tablet-gutter: $grid-desktop-gutter;
+$grid-tablet-margin: $grid-desktop-margin;
+
+$grid-tablet-breakpoint: 480px;
+
+$grid-phone-columns: 4;
+$grid-phone-gutter: $grid-desktop-gutter;
+$grid-phone-margin: $grid-desktop-margin;
+
+$grid-cell-default-columns: $grid-phone-columns;
+$grid-max-columns: $grid-desktop-columns;
+
+
 /* z-index */
 $z-index-level-1: 20;
 $z-index-level-2: 30;
