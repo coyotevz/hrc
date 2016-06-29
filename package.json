@@ -43,6 +43,7 @@
     "ora": "^0.2.0",
     "sass-loader": "^3.2.0",
     "shelljs": "^0.6.0",
+    "tether-tooltip": "^1.2.0",
     "url-loader": "^0.5.7",
     "voie": "^0.7.0",
     "vue-hot-reload-api": "^1.2.0",
