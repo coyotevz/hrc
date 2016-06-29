@@ -1,12 +1,16 @@
 import Vue from 'vue'
 import { StateManager } from 'voie'
 import Resource from 'vue-resource'
+import VueTransferDom from 'vue-transfer-dom'
 
 require('scss/main.scss')
 
 // Install resource
 Vue.use(Resource)
 Vue.http.options.root = 'http://localhost:5000/api/v1'
+
+// Install vue-transfer-dom, required by ui-dialog
+Vue.use(VueTransferDom)
 
 Vue.config.debug = true
 

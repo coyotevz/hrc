@@ -7,7 +7,7 @@
     <ui-fab id="add-button" icon="add" @click="showDialog()" color="accent"
       tooltip="Add Employee" tooltip-position="top center"></ui-fab>
 
-    <ui-dialog v-ref:add-dialog :show.sync="false"></ui-dialog>
+    <ui-dialog v-ref:add-dialog v-transfer-dom></ui-dialog>
 
     <!--div v-transfer-dom>
       <mdl-dialog v-ref:add-dialog title="New employee">
@@ -46,8 +46,7 @@ export default {
   methods: {
     showDialog () {
       console.log('show dialog')
-      // this.$refs.addDialog.open()
-      this.$refs.addDialog.show = true
+      this.$refs.addDialog.open()
       this.$nextTick(() => this.$refs.addDialog.$el.querySelector('input').focus())
     },
     okDialog () {
