@@ -1,7 +1,7 @@
 <template>
   <ui-toolbar class="ui-layout-header" :title="title" colored>
     <div slot="actions">
-      <ui-icon-button clear icon="more_vert" color="white"></ui-icon-button>
+      <ui-icon-button clear icon="more_vert" color="white" tooltip="Open Menu"></ui-icon-button>
     </div>
   </ui-toolbar>
 

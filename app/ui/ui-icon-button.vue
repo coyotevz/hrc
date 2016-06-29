@@ -11,8 +11,8 @@
     <ui-ripple-ink v-if="!hideRippleInk && !disabled" :trigger="$els.button">
     </ui-ripple-ink>
 
-    <!--ui-tooltip :trigger="$els.button" :content="tooltip"
-      :position="tooltipPosition" v-if="tooltip"></ui-tooltip-->
+    <ui-tooltip :trigger="$els.button" :content="tooltip"
+      :position="tooltipPosition" v-if="tooltip"></ui-tooltip>
 
     <!-- TODO: menu -->
     <!-- TODO: popover -->
@@ -23,6 +23,7 @@
 import UiIcon from './ui-icon'
 
 import disabled from './directives/disabled'
+import showTooltip from './mixins/show-tooltip'
 import showRippleInk from './mixins/show-ripple-ink'
 
 export default {
@@ -77,7 +78,8 @@ export default {
   },
 
   mixins: [
-    showRippleInk
+    showRippleInk,
+    showTooltip
   ],
 
   directives: {
