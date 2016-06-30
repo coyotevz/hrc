@@ -7,23 +7,21 @@
     <ui-fab id="add-button" icon="add" @click="showDialog()" color="accent"
       tooltip="Add Employee" tooltip-position="top center"></ui-fab>
 
-    <ui-dialog v-ref:add-dialog v-transfer-dom></ui-dialog>
+    <ui-dialog v-ref:add-dialog v-transfer-dom header="New employee">
+      <employee-form v-ref:employee-form :employee="newEmployee"></employee-form>
+      <template slot="footer">
+        <ui-button @click.stop="okDialog" primary>Ok</ui-button>
+        <ui-button @click.stop="cancelDialog">Cancel</ui-button>
+      </template>
+    </ui-dialog>
 
-    <!--div v-transfer-dom>
-      <mdl-dialog v-ref:add-dialog title="New employee">
-        <employee-form v-ref:employee-form :employee="newEmployee"></employee-form>
-        <template slot="actions">
-          <mdl-button v-mdl-ripple-effect @click.stop="okDialog()" primary>Ok</mdl-button>
-          <mdl-button v-mdl-ripple-effect @click.stop="cancelDialog()">Cancel</mdl-button>
-        </template>
-      </mdl-dialog>
-    </div-->
   </div>
 </template>
 
 <script>
 import UiFab from 'ui/ui-fab'
 import UiDialog from 'ui/ui-dialog'
+import UiButton from 'ui/ui-button'
 
 import EmployeeCard from './employee.card'
 import EmployeeForm from './employee.form'
@@ -39,6 +37,7 @@ export default {
   components: {
     UiFab,
     UiDialog,
+    UiButton,
 
     EmployeeCard,
     EmployeeForm
