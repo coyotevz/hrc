@@ -1,11 +1,13 @@
 <template>
   <div>
-    <mdl-textfield floating-label="Name" :value.sync="employee.first_name"></mdl-textfield>
-    <mdl-textfield floating-label="Last Name" :value.sync="employee.last_name"></mdl-textfield>
+    <ui-textfield floating-label="Name" :value.sync="employee.first_name"></mdl-textfield>
+    <ui-textfield floating-label="Last Name" :value.sync="employee.last_name"></mdl-textfield>
   </div>
 </template>
 
 <script>
+import UiTextfield from 'ui/ui-textfield'
+
 export default {
   props: {
     employee: {
@@ -23,6 +25,10 @@ export default {
           }
         })
     }
+  },
+
+  components: {
+    UiTextfield
   }
 }
 </script>
