@@ -7,15 +7,19 @@
       Let's start
     </ui-button>
 
+    <ui-textfield type="text" value="'Hello'"></ui-textfield>
+
   </div>
 </template>
 
 <script>
 import UiButton from 'ui/ui-button'
+import UiTextfield from 'ui/ui-textfield'
 
 export default {
   components: {
-    UiButton
+    UiButton,
+    UiTextfield
   }
 }
 </script>

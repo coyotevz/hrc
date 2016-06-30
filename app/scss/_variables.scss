@@ -27,6 +27,20 @@ $text-color-primary: rgba($color-black, 0.87);
 $text-link-color: $color-accent;
 $text-color-secondary: rgba($color-black, 0.54);
 
+/* Input fields */
+$input-label-color: $text-color-secondary;
+$input-label-color-hover: rgba($text-color-secondary, 0.65);
+$input-label-color-active: $color-primary;
+$input-label-color-invalid: $palette-red-50;
+
+$input-color: lighten($text-color-primary, 10%);
+$input-color-disabled: $color-primary-disabled;
+$input-color-invalid: $palette-red-50;
+
+$input-border-color: $color-primary-divider;
+$input-border-color-hover: rgba($color-primary-divider, 0.22);
+$input-border-color-active: $color-primary;
+$input-border-color-invalid: $palette-red-50;
 
 /* Header */
 $header-height: 56px;
