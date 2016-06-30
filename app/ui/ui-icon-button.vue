@@ -135,7 +135,7 @@ export default {
   &.color-danger {
     color: $color-white;
     .ui-ripple-ink .ripple.held {
-      opacity: 0.7;
+      opacity: 0.5;
     }
   }
 

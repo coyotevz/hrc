@@ -25,3 +25,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../scss/variables';
+
+body {
+  font-family: $font-stack;
+}
+</style>

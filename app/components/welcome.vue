@@ -2,9 +2,11 @@
   <div class="welcome-page">
     <h2>Human Resource</h2>
     <p>An application to manage and track small people teams</p>
-    <ui-button raised color="primary" v-link="{ name: 'employees' }">
+
+    <ui-button color="primary" v-link="{ name: 'employees' }">
       Let's start
     </ui-button>
+
   </div>
 </template>
 

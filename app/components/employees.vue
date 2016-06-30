@@ -10,8 +10,8 @@
     <ui-dialog v-ref:add-dialog v-transfer-dom header="New employee">
       <employee-form v-ref:employee-form :employee="newEmployee"></employee-form>
       <template slot="footer">
-        <ui-button @click.stop="okDialog" primary>Ok</ui-button>
-        <ui-button @click.stop="cancelDialog">Cancel</ui-button>
+        <ui-button @click.stop="okDialog" color="primary" flat>Ok</ui-button>
+        <ui-button @click.stop="cancelDialog" flat>Cancel</ui-button>
       </template>
     </ui-dialog>
 

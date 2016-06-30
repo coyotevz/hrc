@@ -48,9 +48,11 @@ export default {
   name: 'ui-button',
 
   props: {
-    text: String,
-    icon: String,
     flat: {
+      type: Boolean,
+      default: false
+    },
+    clear: {
       type: Boolean,
       default: false
     },
@@ -61,10 +63,8 @@ export default {
         return 'color-' + color
       }
     },
-    raised: {
-      type: Boolean,
-      default: false
-    },
+    text: String,
+    icon: String,
     iconRight: {
       type: Boolean,
       default: false
@@ -86,10 +86,12 @@ export default {
   computed: {
     styleClasses () {
       let classes = [this.color]
+      if (this.flat && this.clear) {
+        console.warn('Must specefy one type of ui-button: flat or clear')
+      }
       if (this.flat) {
         classes.push('ui-button-flat')
-      }
-      if (this.raised) {
+      } else if (!this.clear) {
         classes.push('ui-button-raised')
       }
       if (this.hasDropdownMenu || this.hasPopover) {
@@ -114,9 +116,9 @@ export default {
     UiIcon
   },
 
-  mixins: {
+  mixins: [
     showRippleInk
-  },
+  ],
 
   directives: {
     disabled
@@ -203,13 +205,13 @@ export default {
     color: white;
 
     .ui-ripple-ink .ripple.held {
-      opacity: 0.7;
+      opacity: 0.5;
     }
   }
 
   &.color-default {
     color: $text-color-primary;
-    bakcground-color: $palette-grey-200;
+    background-color: $palette-grey-200;
 
     &:hover:not([disabled]),
     &.dropdown-open {
@@ -235,16 +237,62 @@ export default {
   &.color-primary {
     background-color: $color-primary;
 
-    &:hover:not([disabled]),
-    &.dropdown-open {
-      // background-color: darken($color-primary, 15%);
-    }
-
     &.autofocus:focus,
     body[modality="keboard"] &:focus {
-      background-color: darken($color-primary, 20%);
       outline-color: darken($color-primary, 20%);
     }
+  }
+
+  &.color-accent {
+    background-color: $color-accent;
+
+    &.autofocus:focus,
+    body[modality="keyboard"] &:focus {
+      outline-color: darken($color-accent, 20%)
+    }
+  }
+
+  &.color-success {
+    background-color: $color-success;
+
+    &.autofocus:focus,
+    body[modality="keyboard"] &:focus {
+      outline-color: darken($color-success, 25%)
+    }
+  }
+
+  &.color-warning {
+    background-color: $color-warning;
+
+    &.autofocus:focus,
+    body[modality="keyboard"] &:focus {
+      outline-color: darken($color-warning, 25%)
+    }
+  }
+
+  &.color-danger {
+    background-color: $color-danger;
+
+    &.autofocus:focus,
+    body[modality="keyboard"] &:focus {
+      outline-color: darken($color-danger, 25%)
+    }
+  }
+
+  &.ui-button-clear {
+    background: transparent;
+
+    &:hover:not([disabled]),
+    &.dropdown-open {
+      background-color: $palette-grey-200;
+    }
+
+    &.color-default { color: $text-color-primary; }
+    &.color-primary { color: $color-primary; }
+    &.color-accent  { color: $color-accent; }
+    &.color-success { color: $color-success; }
+    &.color-danger  { color: $color-danger; }
+    &.color-warning { color: $color-warning; }
   }
 }
 </style>
