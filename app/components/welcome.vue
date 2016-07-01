@@ -7,6 +7,10 @@
       Let's start
     </ui-button>
 
+    <ui-button color="accent" v-link="{ name: 'demo' }">
+      View ui demo
+    </ui-button>
+
     <ui-textfield type="text" value="'Hello'"></ui-textfield>
 
   </div>

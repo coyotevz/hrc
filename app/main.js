@@ -22,6 +22,23 @@ manager.add('root', {
   component: require('components/welcome')
 })
 
+manager.add('demo', {
+  path: '/demo',
+  redirect: {
+    name: 'demo.component',
+    params: { componentId: 'ui-toolbar' } // sync with menu 0 on demo.component
+  }
+})
+
+manager.add('demo.component', {
+  path: '/demo/:componentId',
+  component: require('ui/demo/ui-demo'),
+  enter: (ctx) => {
+    ctx.data.componentId = ctx.params.componentId
+    return Promise.resolve()
+  }
+})
+
 manager.add('app', {
   component: require('components/application')
 })
