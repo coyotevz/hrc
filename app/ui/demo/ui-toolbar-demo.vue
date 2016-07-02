@@ -111,6 +111,27 @@
       &lt;/ui-toolbar&gt;
       </code></pre>
 
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="prop in propsDoc">
+              <td class="name">{{ prop.name }}</td>
+              <td class="type">{{ prop.type }}</td>
+              <td class="default">{{ prop.default }}</td>
+              <td class="description">{{{ prop.description }}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
   </section>
 </template>
 
@@ -118,7 +139,21 @@
 import UiToolbar from '../ui-toolbar'
 import UiIconButton from '../ui-icon-button'
 
+let propsDoc = [
+  { name: 'type', type: 'String', default: '"default"',
+    description: 'The type of toolbar (determines the background color). ' +
+    'One of <code>default</code> or <code>colored</code>' },
+  { name: 'textColor', type: 'String', default: '"black"',
+    description: 'The toolbar text and icon color. One of <code>black</code>' +
+    ' or <code>white</code>.' }
+]
+
 export default {
+  data () {
+    return {
+      propsDoc
+    }
+  },
   components: {
     UiToolbar,
     UiIconButton
