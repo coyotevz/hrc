@@ -1,6 +1,8 @@
 <template>
   <section class="section section-ui-fab">
-    <p>UiFab is the Floating Action Button (FAB) from Material Design. It supports focus (keyboard separately), hover and disabled states.</p>
+    <p><code>ui-fab</code> is the Floating Action Button (FAB) from Material
+      Design. It supports focus (keyboard separately), hover and disabled
+      states.</p>
 
     <p>There are thow types: <code>normal</code> and <code>mini</code> and
       there are three colors: <code>default</code> (white),
@@ -20,6 +22,17 @@
         <ui-fab icon="keyboard_voice" mini></ui-fab>
       </div>
 
+      <pre><code>
+      &lt;ui-fab color="primary" icon="add"&gt;&lt;/ui-fab&gt;
+      &lt;ui-fab color="primary" icon="add" mini&gt;&lt;/ui-fab&gt;
+
+      &lt;ui-fab color="accent" icon="edit"&gt;&lt;/ui-fab&gt;
+      &lt;ui-fab color="accent" icon="edit" mini&gt;&lt;/ui-fab&gt;
+
+      &lt;ui-fab icon="keyboard_voice"&gt;&lt;/ui-fab&gt;
+      &lt;ui-fab icon="keyboard_voice" mini&gt;&lt;/ui-fab&gt;
+      </code></pre>
+
       <h4>With tooltip</h4>
 
       <div class="group">
@@ -32,6 +45,13 @@
         <ui-fab color="primary" icon="edit" tooltip="Right middle"
           tooltip-position="right middle"></ui-fab>
       </div>
+
+      <pre><code>
+      &lt;ui-fab color="primary" icon="edit" tooltip="Top center" tooltip-position="top center"&gt;&lt;/ui-fab&gt;
+      &lt;ui-fab color="primary" icon="edit" tooltip="Bottom center" tooltip-position="bottom center"&gt;&lt;/ui-fab&gt;
+      &lt;ui-fab color="primary" icon="edit" tooltip="Left middle" tooltip-position="left middle"&gt;&lt;/ui-fab&gt;
+      &lt;ui-fab color="primary" icon="edit" tooltip="Right middle" tooltip-position="right middle"&gt;&lt;/ui-fab&gt;
+      </code></pre>
 
     </div>
   </section>

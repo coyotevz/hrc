@@ -26,7 +26,7 @@ manager.add('demo', {
   path: '/demo',
   redirect: {
     name: 'demo.component',
-    params: { componentId: 'ui-toolbar' } // sync with menu 0 on demo.component
+    params: { componentId: null } // sync with menu 0 on demo.component
   }
 })
 

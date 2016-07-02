@@ -22,6 +22,10 @@ body {
 
 .ui-layout-header {
   z-index: 3;
+
+  .ui-layout.with-sidebar & .ui-toolbar-left {
+    max-width: $drawer-width;
+  }
 }
 
 .ui-layout-sidebar {
@@ -66,13 +70,16 @@ body {
 }
 
 .ui-layout-content {
-  //margin-left: $drawer-width;
   position: relative;
   display: inline-block;
   overflow-y: scroll;
   overflow-x: hidden;
   flex-grow: 1;
   z-index: 1;
+
+  .ui-layout.with-sidebar & {
+    margin-left: $drawer-width;
+  }
 
   .container {
     padding: 40px;
