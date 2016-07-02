@@ -167,7 +167,7 @@ export default {
   align-items: center;
   flex-shrink: 0;
 
-  .width-brand & {
+  .with-brand & {
     width: $brand-holder-width;
   }
 }
@@ -183,7 +183,7 @@ export default {
 }
 
 .ui-toolbar-brand {
-  min-width: 160px;
+  min-width: 152px;
 }
 
 .ui-toolbar-center {

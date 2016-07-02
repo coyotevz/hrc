@@ -65,6 +65,10 @@ body {
         color: $color-primary;
         font-weight: 500;
       }
+
+      &:hover {
+        background-color: $palette-grey-200;
+      }
     }
   }
 }

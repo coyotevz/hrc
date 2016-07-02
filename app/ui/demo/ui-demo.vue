@@ -26,12 +26,14 @@ import UiToolbar from '../ui-toolbar'
 
 import UiButtonDemo from './ui-button-demo'
 import UiFabDemo from './ui-fab-demo'
+import UiToolbarDemo from './ui-toolbar-demo'
 
 require('./demo')
 
 let menu = [
   { id: 'ui-button-demo', text: 'Button' },
-  { id: 'ui-fab-demo', text: 'Fab' }
+  { id: 'ui-fab-demo', text: 'Fab' },
+  { id: 'ui-toolbar-demo', text: 'Toolbar' }
 ]
 
 export default {
@@ -69,7 +71,8 @@ export default {
     UiToolbar,
 
     UiButtonDemo,
-    UiFabDemo
+    UiFabDemo,
+    UiToolbarDemo
   }
 }
 </script>

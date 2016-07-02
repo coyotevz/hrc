@@ -247,7 +247,8 @@ export default {
     }
   }
 
-  &.color-black {
+  &.color-black,
+  &.color-default {
     color: $text-color-secondary;
 
     body[modality="keyboard"] &:focus {
