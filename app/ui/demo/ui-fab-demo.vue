@@ -71,6 +71,7 @@ export default {
 .section-ui-fab {
   .group {
     display: flex;
+    justify-content: center;
     margin-bottom: 16px;
     align-items: flex-end;
 

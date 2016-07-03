@@ -58,6 +58,10 @@ export default {
 </script>
 
 <style>
+.section-ui-button .group {
+  display: flex;
+  justify-content: flex-start;
+}
 .section-ui-button .ui-button {
   margin-bottom: 12px;
   margin-right: 8px;

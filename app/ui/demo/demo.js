@@ -2,6 +2,7 @@ import Vue from 'vue'
 import hljs from 'highlight.js/lib/highlight'
 
 require('highlight.js/styles/solarized-light.css')
+require('./demo.scss')
 
 Vue.directive('hljs', {
   update (value) {

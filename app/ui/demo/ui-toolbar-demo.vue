@@ -4,7 +4,7 @@
     <p><code>ui-toolbar</code> component show a toolbar with a navigation icon,
       branding, a title as well as actions.</p>
 
-    <p>Visually, <code>ui-toolbar</code> has two types: <code>defautl</code>
+    <p>Visually, <code>ui-toolbar</code> has two types: <code>default</code>
       and <code>colorized</code>. The toolbar can be raised (with a drop
       shadow) or flat. You can also customize the navigation icon as well as
       the brand, title and actions using slots.</p>
@@ -111,26 +111,7 @@
       &lt;/ui-toolbar&gt;
       </code></pre>
 
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="prop in propsDoc">
-              <td class="name">{{ prop.name }}</td>
-              <td class="type">{{ prop.type }}</td>
-              <td class="default">{{ prop.default }}</td>
-              <td class="description">{{{ prop.description }}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <props-table :props="propsDoc"></props-table>
 
   </section>
 </template>
@@ -138,6 +119,7 @@
 <script>
 import UiToolbar from '../ui-toolbar'
 import UiIconButton from '../ui-icon-button'
+import PropsTable from './props-table'
 
 let propsDoc = [
   { name: 'type', type: 'String', default: '"default"',
@@ -156,7 +138,8 @@ export default {
   },
   components: {
     UiToolbar,
-    UiIconButton
+    UiIconButton,
+    PropsTable
   }
 }
 </script>
