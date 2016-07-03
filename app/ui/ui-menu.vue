@@ -1,5 +1,5 @@
 <template>
-  <ul class="ui-menu" role="menu" tabindex="-1" v-el:dropdown 
+  <ul class="ui-menu" role="menu" tabindex="-1" v-el:dropdown
     @keydown.esc="closeDropdown"
     :class="{ 'has-icons': showIcons, 'has-secondary-text': showSecondaryText }">
 
@@ -92,3 +92,32 @@ export default {
   ]
 }
 </script>
+
+<style lang="scss">
+@import '../scss/variables';
+
+.ui-menu {
+  font-family: $font-stack;
+
+  margin: 0;
+  padding: 4px 0;
+  outline: none;
+  list-style: none;
+
+  background-color: white;
+  box-shadow: 0 2px 4px -1px rgba($color-black, 0.3),
+              0 4px 5px 0 rgba($color-black, 0.15),
+              0 1px 10px 0 rgba($color-black, 0.13);
+
+  min-width: 168px;
+  max-width: 272px;
+
+  max-height: 100vh;
+  overflow-y: auto;
+
+  &.has-secondary-text {
+    min-width: 208px;
+    max-width: 304px;
+  }
+}
+</style>

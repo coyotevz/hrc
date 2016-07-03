@@ -27,6 +27,7 @@ import UiToolbar from '../ui-toolbar'
 import UiButtonDemo from './ui-button-demo'
 import UiFabDemo from './ui-fab-demo'
 import UiToolbarDemo from './ui-toolbar-demo'
+import UiMenuDemo from './ui-menu-demo'
 import UiRippleInkDemo from './ui-ripple-ink-demo'
 
 require('./demo')
@@ -35,6 +36,7 @@ let menu = [
   { id: 'ui-button-demo', text: 'Button' },
   { id: 'ui-fab-demo', text: 'Fab' },
   { id: 'ui-toolbar-demo', text: 'Toolbar' },
+  { id: 'ui-menu-demo', text: 'Menu' },
   { id: 'ui-ripple-ink-demo', text: 'Ripple Ink' }
 ]
 
@@ -75,6 +77,7 @@ export default {
     UiButtonDemo,
     UiFabDemo,
     UiToolbarDemo,
+    UiMenuDemo,
     UiRippleInkDemo
   }
 }
