@@ -82,6 +82,7 @@ export default {
         'invalid': !this.valid,
         'dirty': this.dirty,
         'active': this.active,
+        'has-placeholder': this.placeholder,
         'has-label': !this.hideLabel,
         'is-multi-line': this.multiline,
         'icon-right': this.iconRight,
@@ -196,6 +197,13 @@ $textfield-font-size: 16px;
       transition-timing-function: cubic-bezier(.4,0,.2,1);
       visibility: hidden;
       width: 10px;
+    }
+  }
+
+  &.is-dirty,
+  &.has-placeholder {
+    .ui-textfield-label {
+      visibility: hidden;
     }
   }
 }
