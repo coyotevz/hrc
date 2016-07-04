@@ -1,4 +1,13 @@
 
+section {
+  color: #2c3e50;
+  padding: 40px;
+
+  p:first-child {
+    margin-top: 0;
+  }
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

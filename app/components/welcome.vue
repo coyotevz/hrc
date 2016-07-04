@@ -3,27 +3,21 @@
     <h2>Human Resource</h2>
     <p>An application to manage and track small people teams</p>
 
-    <ui-button color="primary" v-link="{ name: 'employees' }">
-      Let's start
-    </ui-button>
-
-    <ui-button color="accent" v-link="{ name: 'demo' }">
-      View ui demo
-    </ui-button>
-
-    <ui-textfield type="text" value="'Hello'"></ui-textfield>
-
+    <div class="ui-button-group">
+      <ui-button color="primary" v-link="{ name: 'employees' }"
+        text="Let's start"></ui-button>
+      <ui-button color="accent" v-link="{ name: 'demo' }" text="View ui demo">
+      </ui-button>
+    </div>
   </div>
 </template>
 
 <script>
 import UiButton from 'ui/ui-button'
-import UiTextfield from 'ui/ui-textfield'
 
 export default {
   components: {
-    UiButton,
-    UiTextfield
+    UiButton
   }
 }
 </script>

@@ -29,6 +29,7 @@ import UiFabDemo from './ui-fab-demo'
 import UiToolbarDemo from './ui-toolbar-demo'
 import UiMenuDemo from './ui-menu-demo'
 import UiRippleInkDemo from './ui-ripple-ink-demo'
+import UiTextfieldDemo from './ui-textfield-demo'
 
 require('./demo')
 
@@ -37,7 +38,8 @@ let menu = [
   { id: 'ui-fab-demo', text: 'Fab' },
   { id: 'ui-toolbar-demo', text: 'Toolbar' },
   { id: 'ui-menu-demo', text: 'Menu' },
-  { id: 'ui-ripple-ink-demo', text: 'Ripple Ink' }
+  { id: 'ui-ripple-ink-demo', text: 'Ripple Ink' },
+  { id: 'ui-textfield-demo', text: 'Textfield' }
 ]
 
 export default {
@@ -78,21 +80,13 @@ export default {
     UiFabDemo,
     UiToolbarDemo,
     UiMenuDemo,
-    UiRippleInkDemo
+    UiRippleInkDemo,
+    UiTextfieldDemo
   }
 }
 </script>
 
 <style>
-section {
-  color: #2c3e50;
-  padding: 40px;
-}
-
-.section p:first-child {
-  margin-top: 0;
-}
-
 code {
   font-size: 14px;
   font-family: Consolas, Monaco, 'Andale Mono', monospace;

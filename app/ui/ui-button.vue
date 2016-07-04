@@ -295,4 +295,15 @@ export default {
     &.color-warning { color: $color-warning; }
   }
 }
+
+.ui-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  .ui-button {
+    margin: 0 8px;
+  }
+}
 </style>
