@@ -1,4 +1,3 @@
-import $ from 'dominus'
 import Drop from 'tether-drop'
 
 /* global Element */
@@ -67,14 +66,13 @@ export default {
     },
 
     dropdownOpened () {
-      $(this.trigger).addClass('dropdown-open')
+      this.trigger.addClass('dropdown-open')
       this.lastFocussedElement = document.activeElement
       this.$els.dropdown.focus()
       this.$dispatch('dropdown-opened')
     },
 
     dropdownClosed () {
-      $(this.trigger).removeClass('dropdown-open')
       this.lastFocussedElement.focus()
       this.$dispatch('dropdown-closed')
     }
