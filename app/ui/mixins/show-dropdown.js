@@ -26,8 +26,6 @@ export default {
   },
 
   ready () {
-    console.log('this.trigger:', this.trigger)
-    console.log('this.openOn:', this.openOn)
     if (this.trigger) {
       this.initializeDropdown()
     }
