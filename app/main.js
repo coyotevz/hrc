@@ -3,6 +3,8 @@ import { StateManager } from 'voie'
 import Resource from 'vue-resource'
 import VueTransferDom from 'vue-transfer-dom'
 
+require('./helpers.js')
+
 require('scss/main.scss')
 
 // Install resource

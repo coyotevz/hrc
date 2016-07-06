@@ -3,13 +3,11 @@
 </template>
 
 <script>
-import $ from 'dominus'
-
 let startRipple = (eventType, event) => {
   let holder = event.currentTarget
 
-  if (!$(holder).hasClass('ui-ripple-ink')) {
-    holder = $(holder).findOne('.ui-ripple-ink')
+  if (!holder.hasClass('ui-ripple-ink')) {
+    holder = holder.find('.ui-ripple-ink')[0]
 
     if (!holder) {
       return
@@ -59,18 +57,18 @@ let startRipple = (eventType, event) => {
   ripple.className = 'ripple'
   holder.appendChild(ripple)
 
-  setTimeout(() => $(ripple).addClass('held'), 0)
+  setTimeout(() => ripple.addClass('held'), 0)
 
   let releaseEvent = (eventType === 'mousedown' ? 'mouseup' : 'touchend')
 
   let release = () => {
     document.removeEventListener(releaseEvent, release)
-    $(ripple).addClass('done')
+    ripple.addClass('done')
 
     setTimeout(() => {
       holder.removeChild(ripple)
       if (!holder.children.length) {
-        $(holder).removeClass('active').attr('data-ui-event', null)
+        holder.removeClass('active').removeAttribute('data-ui-event')
       }
     }, 450)
   }
