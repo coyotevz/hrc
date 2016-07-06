@@ -24,7 +24,6 @@
     "compression-webpack-plugin": "^0.3.1",
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.23.0",
-    "dominus": "^5.0.6",
     "eslint": "^2.10.2",
     "eslint-config-standard": "^5.1.0",
     "eslint-friendly-formatter": "^2.0.5",
