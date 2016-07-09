@@ -71,7 +71,6 @@ export default {
   },
 
   props: {
-    id: String,
     name: String,
     type: {
       type: String,
@@ -108,7 +107,7 @@ export default {
       type: Boolean,
       default: false
     },
-    validationRules: String,
+    validation: String,
     validationMessages: Object
   },
 
@@ -169,7 +168,7 @@ $textfield-font-size: 16px;
     display: block;
     outline: none;
     font-size: $textfield-font-size;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: $font-stack;
     margin: 0;
     padding: 4px 0;
     width: 100%;
@@ -192,10 +191,6 @@ $textfield-font-size: 16px;
     overflow: hidden;
     white-space: nowrap;
     text-align: left;
-
-    .ui-textfield.has-content & {
-      visibility: hidden;
-    }
 
     &:after {
       background-color: $color-primary;

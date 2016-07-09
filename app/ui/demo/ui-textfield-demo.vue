@@ -17,9 +17,9 @@
     <h3>Examples</h3>
     <div class="demo">
       <h4>Default</h4>
-      <ui-textfield label="Name" id="name" type="text" name="name" value="val"
-        validation="required">
+      <ui-textfield label="Name" name="name" :value.sync="t1" validation="required">
       </ui-textfield>
+      <span>{{ t1 }}</span>
     </div>
 
   </section>
@@ -31,6 +31,12 @@ import UiTextfield from '../ui-textfield'
 export default {
   components: {
     UiTextfield
+  },
+
+  data () {
+    return {
+      t1: ''
+    }
   }
 }
 </script>
