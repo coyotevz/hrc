@@ -17,7 +17,8 @@
     <h3>Examples</h3>
     <div class="demo">
       <h4>Default</h4>
-      <ui-textfield label="Name" id="name" type="text" name="name">
+      <ui-textfield label="Name" id="name" type="text" name="name" value="val"
+        validation="required">
       </ui-textfield>
     </div>
 
