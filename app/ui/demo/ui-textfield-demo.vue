@@ -17,8 +17,8 @@
     <h3>Examples</h3>
     <div class="demo">
       <h4>Default</h4>
-      <ui-textfield label="Name" name="name" type="text" id="name"
-        placeholder="Enter your name"></ui-textfield>
+      <ui-textfield label="Name" id="name" type="text" name="name">
+      </ui-textfield>
     </div>
 
   </section>

@@ -2,15 +2,20 @@
   <div class="ui-textfield" :class="styleClass">
     <div class="ui-textfield-content">
 
-      <input v-if="!multiline" class="ui-textfield-input" :type="type" :id="id"
-        v-model="value|trim" :placeholder="placeholder" :name="name">
+      <input v-if="!multiline" class="ui-textfield-input" :type="type"
+        :placeholder="placeholder" :name="name" :id="id"
+        @focus="onFocus" @blur="onBlur" @change="onChange" @keydown="onKeydown"
+        v-model="value">
 
-      <textarea v-else class="ui-textfield-textarea" v-model="value|trim"
-        :placeholder="placeholder" :name="name"></textarea>
+      <textarea v-else class="ui-textfield-textarea" :placeholder="placeholder"
+        :name="name" :id="id"
+        @focus="onFocus" @blur="onBlur" @change="onChange" @keydown="onKeydown"
+        v-model="value"></textarea>
 
       <label :for="id" class="ui-textfield-label" v-text="label"
         v-if="!hideLabel"></label>
-      <div :for="id" class="ui-textfield-feedback"></div>
+      <div :for="id" class="ui-textfield-feedback" v-if="feedback">
+      </div>
     </div>
   </div>
 
@@ -34,10 +39,45 @@
 </template>
 
 <script>
+import Validator from 'validatorjs'
 import disabled from './directives/disabled'
 
 export default {
   name: 'ui-textfield',
+
+  methods: {
+    onFocus (e) {
+      console.log('onFocus')
+    },
+    onBlur (e) {
+      console.log('onBlur')
+    },
+    onChange (e) {
+      console.log('onChange')
+    },
+    onKeydown (e) {
+      console.log('onKeydown')
+    },
+
+    validate () {
+      if (!this.validationRules || !this.dirty) {
+        return
+      }
+
+      let data = {
+        value: this.value
+      }
+      let rules = {
+        value: this.validationRules
+      }
+      let validation = new Validator(data, rules, this.validationMessages)
+      validation.setAttributeNames({ value: this.name.replace(/_/g, ' ') })
+      this.valid = validation.passes()
+      if (!this.valid) {
+        this.validationError = validation.errors.first('value')
+      }
+    }
+  },
 
   props: {
     id: String,
@@ -59,10 +99,6 @@ export default {
       type: Boolean,
       default: false
     },
-    trimValue: {
-      type: Boolean,
-      default: true
-    },
     valid: {
       type: Boolean,
       default: true,
@@ -72,7 +108,13 @@ export default {
       type: Boolean,
       default: false,
       twoWay: true
-    }
+    },
+    hideValidationErrors: {
+      type: Boolean,
+      default: false
+    },
+    validationRules: String,
+    validationMessages: Object
   },
 
   computed: {
@@ -87,17 +129,6 @@ export default {
         'is-multi-line': this.multiline,
         'icon-right': this.iconRight,
         'has-counter': this.maxLength
-      }
-    }
-  },
-
-  filters: {
-    trim: {
-      write (value) {
-        if (this.type !== 'number' && this.trimValue) {
-          return value.trim()
-        }
-        return value
       }
     }
   },
@@ -161,6 +192,7 @@ $textfield-font-size: 16px;
     border: none;
     border-bottom: 1px solid rgba($color-black, .12);
     display: block;
+    outline: none;
     font-size: $textfield-font-size;
     font-family: Helvetica, Arial, sans-serif;
     margin: 0;
