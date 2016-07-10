@@ -17,12 +17,12 @@
     <h3>Examples</h3>
     <div class="demo">
       <h4>Default</h4>
-      <ui-textfield label="Name" name="name" :value.sync="t1" validation="required">
+      <ui-textfield label="Name" name="name" :value.sync="t1">
       </ui-textfield>
       <span>{{ t1 }}</span>
       <br>
-      <ui-textfield floating-label="Age" name="age" :value.sync="t2"
-        validation="required"></ui-textfield>
+      <ui-textfield floating-label="Age" name="age" :value.sync="t2">
+      </ui-textfield>
       <span>{{ t2 }}</span>
 
       <br>
@@ -31,6 +31,11 @@
       <br>
       <ui-textfield name="help" label="With Help" :value.sync="t4"
         help-text="This is text for assistance on above field"></ui-textfield>
+
+      <br>
+      <ui-textfield name="name" label="Name validation" :value.sync="t5"
+        validation="required"></ui-textfield>
+
     </div>
 
     <props-table :props="propsDoc"></props-table>
@@ -64,7 +69,16 @@ let propsDoc = [
     ' counter. If non of these are enabled, this space is collapsed.' },
   { name: 'disabled', type: 'Boolean', default: 'false', description:
     'Determines whether or not the input is disabled. Set to <code>true</code>' +
-    ' to disable the input.' }
+    ' to disable the input.' },
+  { name: 'validation', type: 'String, Object', default: '', description:
+    'A pipe <code>|</code> separated list of rules for validationg the input.' +
+    ' Can be any of the rules supported by <a' +
+    ' href="https://github.com/skaterdav85/validatorjs#available-rules">' +
+    'validatorjs Validation Rules</a>, <strong>except</strong> the ones that' +
+    ' involve multiple fields. These rules will be applied and validation will' +
+    ' occur automatically when the input is changed or blurred. The error' +
+    ' message of the first failing validation rule will then be shown to the' +
+    ' user.' }
 ]
 
 export default {
@@ -78,7 +92,8 @@ export default {
       propsDoc: propsDoc,
       t1: '',
       t2: '5',
-      t4: ''
+      t4: '',
+      t5: ''
     }
   }
 }

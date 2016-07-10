@@ -2,10 +2,14 @@ import Vue from 'vue'
 import { StateManager } from 'voie'
 import Resource from 'vue-resource'
 import VueTransferDom from 'vue-transfer-dom'
+import Validator from 'validatorjs'
 
 require('./helpers.js')
 
 require('scss/main.scss')
+
+// Set validator lang
+Validator.useLang('en')
 
 // Install resource
 Vue.use(Resource)

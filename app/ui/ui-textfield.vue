@@ -47,7 +47,8 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    }
+    },
+    validation: String
   },
 
   computed: {
@@ -65,7 +66,7 @@ export default {
       }
     },
     showFeedback () {
-      return Boolean(this.helpText)
+      return Boolean(this.helpText || this.validation)
     }
   },
 
@@ -91,17 +92,16 @@ export default {
     },
 
     validate () {
-      if (!this.validationRules || !this.dirty) {
+      if (!this.validation) {
         return
       }
 
-      let data = {
-        value: this.value
-      }
-      let rules = {
-        value: this.validationRules
-      }
-      let validation = new Validator(data, rules, this.validationMessages)
+      console.log('running validation')
+
+      let validation = new Validator(
+        { value: this.value }, // input
+        { value: this.validation } // rules
+      )
       validation.setAttributeNames({ value: this.name.replace(/_/g, ' ') })
       this.valid = validation.passes()
       if (!this.valid) {
@@ -142,8 +142,6 @@ export default {
 @import "../scss/variables";
 
 $textfield-font-size: 16px;
-$textfield-color-hover: rgba($color-black, 0.30);
-$textfield-border-color-hover: rgba($color-black, 0.20);
 
 .ui-textfield {
   position: relative;
@@ -157,11 +155,11 @@ $textfield-border-color-hover: rgba($color-black, 0.20);
 
   &:hover:not(.disabled):not(.invalid):not(.has-content):not(.active) {
     .ui-textfield-label {
-      color: $textfield-color-hover;
+      color: $input-label-color-hover;
     }
 
     .ui-textfield-input {
-      border-bottom-color: $textfield-border-color-hover;
+      border-bottom-color: $input-border-color-hover;
     }
   }
 
@@ -194,7 +192,7 @@ $textfield-border-color-hover: rgba($color-black, 0.20);
     text-align: left;
 
     &:after {
-      background-color: $color-primary;
+      background-color: $input-border-color-active;
       bottom: 20px;
       content: '';
       height: 2px;
@@ -226,7 +224,7 @@ $textfield-border-color-hover: rgba($color-black, 0.20);
     &.active,
     &.has-content {
       .ui-textfield-label {
-        color: $color-primary;
+        color: $input-label-color-active;
         font-size: 12px;
         top: 4px;
         visibility: visible;
@@ -256,6 +254,22 @@ $textfield-border-color-hover: rgba($color-black, 0.20);
 
     .ui-textfield-help {
       color: rgba($color-black, 0.38);
+    }
+  }
+
+  &.invalid {
+    .ui-textfield-label {
+      color: $input-label-color-invalid;
+
+      &:after {
+        background-color: $input-border-color-invalid;
+      }
+    }
+    .ui-textfield-error {
+      color: $input-color-invalid;
+    }
+    .ui-textfield-input {
+      border-bottom-color: $input-border-color-invalid;
     }
   }
 }

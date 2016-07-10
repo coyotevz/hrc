@@ -17,7 +17,7 @@ $color-primary-disabled: $color-primary-hint;
 $color-primary-divider: rgba($color-black, 0.12);
 
 $color-error: $palette-red-500;
-$color-danger: $color-error;
+$color-danger: $palette-orange-500;
 $color-info: $palette-blue-500;
 $color-success: $palette-green-500;
 $color-warning: $palette-orange-500;
@@ -29,18 +29,18 @@ $text-color-secondary: rgba($color-black, 0.54);
 
 /* Input fields */
 $input-label-color: $text-color-secondary;
-$input-label-color-hover: rgba($text-color-secondary, 0.65);
+$input-label-color-hover: rgba($text-color-secondary, 0.30);
 $input-label-color-active: $color-primary;
-$input-label-color-invalid: $palette-red-50;
+$input-label-color-invalid: $palette-red-300;
 
 $input-color: lighten($text-color-primary, 10%);
 $input-color-disabled: $color-primary-disabled;
-$input-color-invalid: $palette-red-50;
+$input-color-invalid: $palette-red-500;
 
 $input-border-color: $color-primary-divider;
-$input-border-color-hover: rgba($color-primary-divider, 0.22);
+$input-border-color-hover: rgba($color-primary-divider, 0.20);
 $input-border-color-active: $color-primary;
-$input-border-color-invalid: $palette-red-50;
+$input-border-color-invalid: $palette-red-500;
 
 /* Header */
 $header-height: 56px;
