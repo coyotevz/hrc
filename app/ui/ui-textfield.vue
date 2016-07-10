@@ -2,19 +2,20 @@
   <div class="ui-textfield" :class="styleClass">
     <div class="ui-textfield-content">
 
-      <input v-if="!multiline" class="ui-textfield-input" :type="type"
-        :placeholder="placeholder" :name="name" :id="id"
-        @focus="onFocus" @blur="onBlur" @change="onChange" @keydown="onKeydown"
-        v-model="value">
+      <input :id="id" class="ui-textfield-input" :type="type" :name="name"
+        @focus="_focus" @blur="_blur" @change="_change" @keydown="_keydown"
+        v-model="value" :disabled="disabled">
 
-      <textarea v-else class="ui-textfield-textarea" :placeholder="placeholder"
-        :name="name" :id="id"
-        @focus="onFocus" @blur="onBlur" @change="onChange" @keydown="onKeydown"
-        v-model="value"></textarea>
+      <label :for="id" class="ui-textfield-label" v-text="label || floatingLabel">
+      </label>
 
-      <label :for="id" class="ui-textfield-label" v-text="label || floatingLabel"
-        v-if="!hideLabel"></label>
-      <div :for="id" class="ui-textfield-feedback" v-if="feedback">
+      <div class="ui-textfield-feedback" v-if="showFeedback">
+        <div class="ui-textfield-error" transition="ui-textfield-feedback-toggle"
+          v-text="validationError" v-show="!valid"></div>
+        <div class="ui-textfield-help" transition="ui-textfield-feedback-toggle"
+          v-text="helpText" v-else></div>
+      </div>
+
       </div>
     </div>
   </div>
@@ -27,19 +28,65 @@ import disabled from './directives/disabled'
 export default {
   name: 'ui-textfield',
 
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    value: {
+      type: [String, Number],
+      twoWay: true
+    },
+    type: {
+      type: String,
+      default: 'text' // 'text', 'search', 'email', 'url', 'tel' and 'number'
+    },
+    label: String,
+    floatingLabel: String,
+    helpText: String,
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  computed: {
+    id () {
+      return 'textfield-' + this.name
+    },
+    styleClass () {
+      return {
+        'disabled': this.disabled,
+        'invalid': !this.valid,
+        'dirty': this.dirty,
+        'active': this.active,
+        'has-content': Boolean(this.value === 0 || this.value),
+        'floating-label': this.floatingLabel !== undefined
+      }
+    },
+    showFeedback () {
+      return Boolean(this.helpText)
+    }
+  },
+
   methods: {
-    onFocus (e) {
+    _focus (e) {
       this.active = true
+      this.$dispatch('focus', e)
     },
-    onBlur (e) {
+    _blur (e) {
       this.active = false
-      this.dirty = true
+      this._checkDirty()
       this.validate()
+      this.$dispatch('blur', e)
     },
-    onChange (e) {
-      this.$dispatch('change')
+    _checkDirty () {
+      this.dirty = this.initialValue !== this.value
     },
-    onKeydown (e) {
+    _change (e) {
+      this.$dispatch('change', e)
+    },
+    _keydown (e) {
       this.$dispatch('keydown', e)
     },
 
@@ -65,73 +112,16 @@ export default {
 
   watch: {
     value () {
-      this.dirty = true
+      this._checkDirty()
       this.validate()
-    }
-  },
-
-  props: {
-    name: String,
-    type: {
-      type: String,
-      default: 'text'
-    },
-    label: String,
-    floatingLabel: String,
-    hideLabel: {
-      type: Boolean,
-      default: false
-    },
-    value: {
-      type: [String, Number],
-      default: '',
-      twoWay: true
-    },
-    placeholder: String,
-    helpText: String,
-    multiline: {
-      type: Boolean,
-      default: false
-    },
-    valid: {
-      type: Boolean,
-      default: true,
-      twoWay: true
-    },
-    dirty: {
-      type: Boolean,
-      default: false,
-      twoWay: true
-    },
-    hideValidationErrors: {
-      type: Boolean,
-      default: false
-    },
-    validation: String,
-    validationMessages: Object
-  },
-
-  computed: {
-    styleClass () {
-      return {
-        'disabled': this.disabled,
-        'invalid': !this.valid,
-        'dirty': this.dirty,
-        'active': this.active,
-        'has-placeholder': this.placeholder,
-        'has-content': Boolean(this.value),
-        'floating-label': this.floatingLabel !== undefined,
-        'has-label': !this.hideLabel,
-        'is-multi-line': this.multiline,
-        'icon-right': this.iconRight,
-        'has-counter': this.maxLength
-      }
     }
   },
 
   data () {
     return {
       active: false,
+      dirty: false,
+      valid: true,
       initialValue: '',
       validationError: ''
     }
@@ -152,25 +142,36 @@ export default {
 @import "../scss/variables";
 
 $textfield-font-size: 16px;
+$textfield-color-hover: rgba($color-black, 0.30);
+$textfield-border-color-hover: rgba($color-black, 0.20);
 
 .ui-textfield {
   position: relative;
   font-size: $textfield-font-size;
+  font-family: $font-stack;
   display: inline-block;
   width: 300px;
   max-width: 100%;
   margin: 0;
   padding: 20px 0;
 
+  &:hover:not(.disabled):not(.invalid):not(.has-content):not(.active) {
+    .ui-textfield-label {
+      color: $textfield-color-hover;
+    }
+
+    .ui-textfield-input {
+      border-bottom-color: $textfield-border-color-hover;
+    }
+  }
+
   .ui-textfield-input {
     border: none;
-    border-bottom: 1px solid rgba($color-black, .12);
+    border-bottom: 1px solid rgba($color-black, 0.12);
     display: block;
     outline: none;
     font-size: $textfield-font-size;
     font-family: $font-stack;
-    margin: 0;
-    padding: 4px 0;
     width: 100%;
     background: none;
     text-align: left;
@@ -178,15 +179,15 @@ $textfield-font-size: 16px;
   }
 
   .ui-textfield-label {
-    bottom: 0;
     color: rgba($color-black, 0.26);
-    font-size: 16px;
+    font-size: $textfield-font-size;
+    bottom: 0;
     left: 0;
     right: 0;
+    top: 20px;
     pointer-events: none;
     position: absolute;
     display: block;
-    top: 24px;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
@@ -201,8 +202,8 @@ $textfield-font-size: 16px;
       position: absolute;
       transition-duration: .2s;
       transition-timing-function: cubic-bezier(.4,0,.2,1);
-      visibility: hidden;
       width: 10px;
+      visibility: hidden;
     }
   }
 
@@ -210,12 +211,10 @@ $textfield-font-size: 16px;
     visibility: hidden;
   }
 
-  &.active {
-    .ui-textfield-label:after {
-      left: 0;
-      visibility: visible;
-      width: 100%;
-    }
+  &.active .ui-textfield-label:after {
+    left: 0;
+    visibility: visible;
+    width: 100%;
   }
 
   &.floating-label {
@@ -235,11 +234,42 @@ $textfield-font-size: 16px;
     }
   }
 
-  &.is-dirty,
-  &.has-placeholder {
-    .ui-textfield-label {
-      visibility: hidden;
+  &.disabled {
+    .ui-textfield-input {
+      color: rgba($color-black, 0.38);
+      border-bottom-style: dotted;
+      border-bottom-width: 2px;
+    }
+    .ui-textfield-feedback {
+      opacity: 0.8;
     }
   }
+
+  .ui-textfield-feedback {
+    position: absolute;
+    display: block;
+    font-size: 14px;
+    margin: 0;
+    min-height: 20px;
+    overflow: hidden;
+    padding-top: 2px;
+
+    .ui-textfield-help {
+      color: rgba($color-black, 0.38);
+    }
+  }
+}
+
+.ui-textfield-feedback-toggle-transition {
+  transition-property: opacity, margin-top;
+  transition-duration: .3s;
+  margin-top: 0;
+  opacity: 1;
+}
+
+.ui-textfield-feedback-toggle-enter,
+.ui-textfield-feedback-toggle-leave {
+  margin-top: -20px;
+  opacity: 0;
 }
 </style>
