@@ -48,7 +48,7 @@ export default {
       type: Boolean,
       default: false
     },
-    validation: String
+    validation: [String, Array, Object]
   },
 
   computed: {
@@ -96,11 +96,23 @@ export default {
         return
       }
 
-      console.log('running validation')
+      let rules
+      let messages = null
+
+      if (typeof this.validation === 'string' ||
+          this.validation instanceof Array) {
+        rules = this.validation
+      } else if (this.validation instanceof Object) {
+        // keys are rules, values are messages
+      } else {
+        console.warn('Unknown typeof this.validation')
+        return
+      }
 
       let validation = new Validator(
         { value: this.value }, // input
-        { value: this.validation } // rules
+        { value: rules }, // rules
+        messages // custom messages
       )
       validation.setAttributeNames({ value: this.name.replace(/_/g, ' ') })
       this.valid = validation.passes()
@@ -258,12 +270,15 @@ $textfield-font-size: 16px;
   }
 
   &.invalid {
-    .ui-textfield-label {
-      color: $input-label-color-invalid;
-
-      &:after {
-        background-color: $input-border-color-invalid;
+    &.floating-label.active,
+    &.floating-label.has-content {
+      .ui-textfield-label {
+        color: $input-label-color-invalid;
       }
+    }
+
+    .ui-textfield-label:after {
+      background-color: $input-border-color-invalid;
     }
     .ui-textfield-error {
       color: $input-color-invalid;

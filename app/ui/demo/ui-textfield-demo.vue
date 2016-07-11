@@ -70,7 +70,7 @@ let propsDoc = [
   { name: 'disabled', type: 'Boolean', default: 'false', description:
     'Determines whether or not the input is disabled. Set to <code>true</code>' +
     ' to disable the input.' },
-  { name: 'validation', type: 'String, Object', default: '', description:
+  { name: 'validation', type: 'String, Array, Object', default: '', description:
     'A pipe <code>|</code> separated list of rules for validationg the input.' +
     ' Can be any of the rules supported by <a' +
     ' href="https://github.com/skaterdav85/validatorjs#available-rules">' +
