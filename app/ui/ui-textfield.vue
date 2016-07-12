@@ -120,7 +120,7 @@ export default {
             // first case expect argument for key
             arg = val
           }
-          rules.push(key+':'+arg)
+          rules.push(key + ':' + arg)
           if (message) {
             messages[key] = message
           }
