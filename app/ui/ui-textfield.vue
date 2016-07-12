@@ -109,7 +109,6 @@ export default {
         rules = []
         messages = {}
         for (let key in this.validation) {
-          console.log('key:', key, 'value:', this.validation[key])
           let val = this.validation[key]
           let arg, message
           if (val instanceof Object) {

@@ -34,7 +34,7 @@
 
       <br>
       <ui-textfield name="name" label="Name validation" :value.sync="t5"
-        validation="required"></ui-textfield>
+        validation="required|min:5"></ui-textfield>
 
     </div>
 
