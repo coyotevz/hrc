@@ -117,5 +117,21 @@ export default {
       margin: 0;
     }
   }
+
+  .ui-card-supporting-text {
+    color: $card-text-color;
+    font-size: $card-text-font-size;
+    line-height: $card-text-line-height;
+    padding: 16px;
+    width: 90%;
+    overflow: hidden;
+  }
+
+  .ui-card-actions {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 8px;
+    background-color: transparent;
+  }
 }
 </style>

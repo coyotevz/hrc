@@ -11,7 +11,14 @@
       considerably, like photos with captions of variable length. Cards have a
       constatn with and a variable height, depending on their content.</p>
 
+    <h3>Example</h3>
+
     <ui-card title="Update" :supporting-text="lorem" actions="actions" actions-text="View updates"></ui-card>
+
+    <pre><code>
+    &lt;ui-card title="Update" :supporting-text="lorem" actions="actions" actions-text="View updates"&gt;
+    &lt;/ui-card&gt;
+    </code></pre>
 
   </section>
 </template>
