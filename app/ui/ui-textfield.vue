@@ -103,7 +103,28 @@ export default {
           this.validation instanceof Array) {
         rules = this.validation
       } else if (this.validation instanceof Object) {
-        // keys are rules, values are messages
+        // keys are rules name, values are arguments of rule or object with
+        // arguments and messages, ex:
+        // { required: true, regex: { rule: /\d/, message: 'invalid value' } }
+        rules = []
+        messages = {}
+        for (let key in this.validation) {
+          console.log('key:', key, 'value:', this.validation[key])
+          let val = this.validation[key]
+          let arg, message
+          if (val instanceof Object) {
+            // second case expect rule and message
+            arg = val['rule']
+            message = val['message'] || null
+          } else {
+            // first case expect argument for key
+            arg = val
+          }
+          rules.push(key+':'+arg)
+          if (message) {
+            messages[key] = message
+          }
+        }
       } else {
         console.warn('Unknown typeof this.validation')
         return
