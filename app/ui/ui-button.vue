@@ -89,9 +89,9 @@ export default {
       if (this.flat && this.clear) {
         console.warn('Must specefy one type of ui-button: flat or clear')
       }
-      if (this.flat) {
-        classes.push('ui-button-flat')
-      } else if (!this.clear) {
+      if (this.clear) {
+        classes.push('ui-button-clear')
+      } else if (!this.flat) {
         classes.push('ui-button-raised')
       }
       if (this.hasDropdownMenu || this.hasPopover) {

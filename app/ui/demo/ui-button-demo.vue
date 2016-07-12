@@ -24,7 +24,7 @@
     <h3>Examples</h3>
 
     <div class="demo">
-      <h4>Normal</h4>
+      <h4>Normal (raised)</h4>
 
       <div class="group">
         <ui-button>Default</ui-button>
@@ -43,16 +43,72 @@
       &lt;ui-button color="warning"&gt;Warning&lt;/ui-button&gt;
       &lt;ui-button color="danger"&gt;Danger&lt;/ui-button&gt;
       </code></pre>
+
+      <h4>Flat</h4>
+      <div class="group">
+        <ui-button flat>Default</ui-button>
+        <ui-button flat color="primary">Primary</ui-button>
+        <ui-button flat color="accent">Accent</ui-button>
+        <ui-button flat color="success">Success</ui-button>
+        <ui-button flat color="warning">Warning</ui-button>
+        <ui-button flat color="danger">Danger</ui-button>
+      </div>
+
+      <pre><code>
+      &lt;ui-button flat&gt;Default&lt;/ui-button&gt;
+      &lt;ui-button flat color="primary"&gt;Primary&lt;/ui-button&gt;
+      &lt;ui-button flat color="accent"&gt;Accent&lt;/ui-button&gt;
+      &lt;ui-button flat color="success"&gt;Success&lt;/ui-button&gt;
+      &lt;ui-button flat color="warning"&gt;Warning&lt;/ui-button&gt;
+      &lt;ui-button flat color="danger"&gt;Danger&lt;/ui-button&gt;
+      </code></pre>
+
+      <h4>Clear</h4>
+      <div class="group">
+        <ui-button clear>Default</ui-button>
+        <ui-button clear color="primary">Primary</ui-button>
+        <ui-button clear color="accent">Accent</ui-button>
+        <ui-button clear color="success">Success</ui-button>
+        <ui-button clear color="warning">Warning</ui-button>
+        <ui-button clear color="danger">Danger</ui-button>
+      </div>
+
+      <pre><code>
+      &lt;ui-button clear&gt;Default&lt;/ui-button&gt;
+      &lt;ui-button clear color="primary"&gt;Primary&lt;/ui-button&gt;
+      &lt;ui-button clear color="accent"&gt;Accent&lt;/ui-button&gt;
+      &lt;ui-button clear color="success"&gt;Success&lt;/ui-button&gt;
+      &lt;ui-button clear color="warning"&gt;Warning&lt;/ui-button&gt;
+      &lt;ui-button clear color="danger"&gt;Danger&lt;/ui-button&gt;
+      </code></pre>
+
     </div>
+
+    <props-table :props="propsDoc"></props-table>
   </section>
 </template>
 
 <script>
 import UiButton from '../ui-button'
+import PropsTable from './props-table'
+
+let propsDoc = [
+  { name: 'flat', type: 'Boolean', default: 'false', description: 'Has a' +
+    ' background color, whith white or black text color, no shadow.' },
+  { name: 'clear', type: 'Boolean', default: 'false', description: 'Has no' +
+    ' background, no shadow, seamless border text color is the button color.' }
+]
 
 export default {
+  data () {
+    return {
+      propsDoc
+    }
+  },
+
   components: {
-    UiButton
+    UiButton,
+    PropsTable
   }
 }
 </script>
