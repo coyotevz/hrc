@@ -13,12 +13,13 @@ Vue.directive('hljs', {
 
 Vue.mixin({
   ready () {
-    hljs.initHighlighting.called = false
-    hljs.initHighlighting()
-    let main = document.querySelector('#app main')
-    if (main) {
-      main.scrollTop = 0
-    }
+    let blocks = document.querySelectorAll('pre code')
+    blocks.each(block => {
+      if (!block.hljs) {
+        hljs.highlightBlock(block)
+        block.hljs = true
+      }
+    })
   }
 })
 
