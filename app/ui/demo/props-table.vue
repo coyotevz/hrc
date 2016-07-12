@@ -1,7 +1,7 @@
 <template>
   <template v-if="props.length">
     <h3>Properties</h3>
-    <div class="table-responsive">
+    <div class="table-responsive properties">
       <table class="table">
         <thead>
           <tr>
@@ -34,3 +34,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.properties code.hljs {
+  margin: 0;
+  padding: 1em 8px;
+}
+</style>

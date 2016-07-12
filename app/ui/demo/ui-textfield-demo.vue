@@ -78,7 +78,13 @@ let propsDoc = [
     ' involve multiple fields. These rules will be applied and validation will' +
     ' occur automatically when the input is changed or blurred. The error' +
     ' message of the first failing validation rule will then be shown to the' +
-    ' user.' }
+    ' user.<br>' +
+    'If you need custom error messages must use object notation for rules that' +
+    ' is partialy based on' +
+    ' <a href="http://vuejs.github.io/vue-validator/en/syntax.html">' +
+    'vue-validation rules</a>.' +
+    '<pre><code>{\n  required: true,\n  min: {\n    rule: 3,\n    message:' +
+    '\'Too short!!\'\n  }\n}\n</code></pre>' }
 ]
 
 export default {
