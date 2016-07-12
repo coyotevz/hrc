@@ -179,8 +179,6 @@ $textfield-font-size: 16px;
   position: relative;
   font-size: $textfield-font-size;
   font-family: $font-stack;
-  display: inline-block;
-  width: 300px;
   max-width: 100%;
   margin: 0;
   padding: 20px 0;
