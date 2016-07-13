@@ -27,6 +27,14 @@
       actions="actions" actions-text="View updates"&gt;&lt;/ui-card&gt;
     </code></pre>
 
+    <ui-card :supporting-text="card1SupportingText" actions="actions" actions-text="View updates"></ui-card>
+
+    <br><br>
+
+    <ui-card :supporting-text="card1SupportingText" actions="actions" actions-text="View updates">
+      <h3 slot="title" class="ui-card-title-text">Other&nbsp;<em>title</em></h3>
+    </ui-card>
+
   </section>
 </template>
 

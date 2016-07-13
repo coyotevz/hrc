@@ -6,7 +6,7 @@
     <div slot="supporting-text" class="ui-card-supporting-text">
       Elit officiis dolor harum veritatis ipsam? Ipsum ut id quis officiis dicta! Minus quibusdam iure voluptatibus maxime et! Perferendis expedita sit quod doloribus soluta. Accusamus optio consequuntur cupiditate recusandae porro.
     </div>
-  </mdl-card>
+  </ui-card>
 </template>
 
 <script>

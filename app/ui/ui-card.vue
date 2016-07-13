@@ -1,11 +1,17 @@
 <template>
   <div class="ui-card">
 
-    <div class="ui-card-title" v-if="title">
+    <div class="ui-card-title" v-if="!$els.title">
       <slot name="title">
-        <h2 class="ui-card-title-text" v-text="title"></h2>
+        <h2 v-el:title class="ui-card-title-text" v-if="title" v-text="title"></h2>
       </slot>
     </div>
+
+    <!--slot name="title" v-if="title">
+      <div class="ui-card-title">
+        <h2 class="ui-card-title-text" v-text="title"></h2>
+      </div>
+    </slot-->
 
     <slot name="subtitle" v-if="subtitle">
       <div class="ui-card-subtitle-text" v-text="subtitle"></div>
@@ -53,6 +59,10 @@ export default {
       default: true
     },
     subtitle: {
+      type: String,
+      default: true
+    },
+    media: {
       type: String,
       default: true
     },
