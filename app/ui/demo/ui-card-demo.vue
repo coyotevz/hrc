@@ -11,30 +11,40 @@
       considerably, like photos with captions of variable length. Cards have a
       constatn with and a variable height, depending on their content.</p>
 
+    <p>You can replace any of the existing content by using slots. Available
+      slots are <code>title</code>, <code>subtitle</code>,
+      <code>supporting-text</code>, <code>media</code>, <code>actions</code>
+      and <code>menu</code>.</p>
+
     <h3>Example</h3>
 
-    <ui-card title="Update" :supporting-text="lorem" actions="actions" actions-text="View updates"></ui-card>
+    <ui-card :title="card1Title" :supporting-text="card1SupportingText" actions="actions" actions-text="View updates"></ui-card>
+
+    <ui-textfield :value.sync="card1Title" name="card_title" floating-label="Card Title"></ui-textfield>
 
     <pre><code>
-    &lt;ui-card title="Update" :supporting-text="lorem" actions="actions" actions-text="View updates"&gt;
-    &lt;/ui-card&gt;
+    &lt;ui-card :title="cardTitle" :supporting-text="supportingText"
+      actions="actions" actions-text="View updates"&gt;&lt;/ui-card&gt;
     </code></pre>
 
   </section>
 </template>
 
 <script>
+import UiTextfield from '../ui-textfield'
 import UiCard from '../ui-card'
 
 export default {
   data () {
     return {
-      lorem: 'Consectetur optio autem minus odio consectetur molestiae' +
-      ' accusantium veritatis odio, illum.'
+      card1Title: 'Update',
+      card1SupportingText: 'Consectetur optio autem minus odio consectetur' +
+      ' molestiae accusantium veritatis odio, illum.'
     }
   },
 
   components: {
+    UiTextfield,
     UiCard
   }
 }

@@ -11,12 +11,12 @@
       <div class="ui-card-subtitle-text" v-text="subtitle"></div>
     </slot>
 
-    <slot name="supporting-text" v-if="supportingText">
-      <div class="ui-card-supporting-text" v-text="supportingText"></div>
-    </slot>
-
     <slot name="media" v-if="media">
       <img :src="media">
+    </slot>
+
+    <slot name="supporting-text" v-if="supportingText">
+      <div class="ui-card-supporting-text" v-text="supportingText"></div>
     </slot>
 
     <slot name="actions" v-if="actions">
@@ -38,8 +38,8 @@ import UiButton from './ui-button'
 const slots = [
   'title',
   'subtitle',
-  'supportingText',
   'media',
+  'supportingText',
   'actions',
   'menu'
 ]
