@@ -75,3 +75,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.section-ui-icon-button .ui-icon-button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+</style>
