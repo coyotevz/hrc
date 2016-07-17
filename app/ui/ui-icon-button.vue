@@ -186,7 +186,7 @@ export default {
     }
   }
 
-  &.color-succsess {
+  &.color-success {
     background-color: $color-success;
 
     &:hover:not([disabled]),
