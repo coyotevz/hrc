@@ -27,6 +27,7 @@ import UiToolbar from '../ui-toolbar'
 import UiButtonDemo from './ui-button-demo'
 import UiCardDemo from './ui-card-demo'
 import UiFabDemo from './ui-fab-demo'
+import UiIconButtonDemo from './ui-icon-button-demo'
 import UiMenuDemo from './ui-menu-demo'
 import UiRippleInkDemo from './ui-ripple-ink-demo'
 import UiTextfieldDemo from './ui-textfield-demo'
@@ -38,6 +39,7 @@ let menu = [
   { id: 'ui-button-demo', text: 'Button' },
   { id: 'ui-card-demo', text: 'Card' },
   { id: 'ui-fab-demo', text: 'Fab' },
+  { id: 'ui-icon-button-demo', text: 'Icon Button' },
   { id: 'ui-menu-demo', text: 'Menu' },
   { id: 'ui-ripple-ink-demo', text: 'Ripple Ink' },
   { id: 'ui-textfield-demo', text: 'Textfield' },
@@ -81,6 +83,7 @@ export default {
     UiButtonDemo,
     UiCardDemo,
     UiFabDemo,
+    UiIconButtonDemo,
     UiMenuDemo,
     UiRippleInkDemo,
     UiTextfieldDemo,

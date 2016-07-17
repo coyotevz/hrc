@@ -25,7 +25,7 @@
         }}">Button</a> and <a v-link="{ name: 'demo.component', params: {
         componentId: 'ui-icon-button-demo' }}">Icon Button</a> components.</p>
 
-    <!--div class="initial-data">
+    <div class="initial-data">
       <p>With follwing options property:</p>
       <pre><code>
       let menuOptions = [
@@ -59,7 +59,7 @@
         }
       ]
       </code></pre>
-    </div-->
+    </div>
 
     <div class="demo">
       <h4>Default</h4>
